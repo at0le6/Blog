@@ -28,5 +28,16 @@ const checkRolesExisted = (req, res, next) => {
 
     next();
 };
-
-export { checkDuplicateUsernameOrEmail, checkRolesExisted };
+const userExist = async(req, res, next) => {
+    try {
+        const user = await User.findById(req.userId);
+        console.log(req.userId);
+        if (!user) {
+            return res.status(404).json({ msg: "User deleted post creation dinied" })
+        }
+        next()
+    } catch (error) {
+        res.status(500).json({ message: error });
+    }
+}
+export { checkDuplicateUsernameOrEmail, checkRolesExisted, userExist };

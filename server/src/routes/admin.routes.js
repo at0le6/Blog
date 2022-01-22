@@ -4,5 +4,5 @@ import { authoritations, verify } from '../middleware';
 const router = Router();
 
 router.post('/sigUpAdmon', [authoritations.verifyToken, authoritations.isAdmin, verify.checkDuplicateUsernameOrEmail, verify.checkRolesExisted], privatesignUp)
-router.post('/updateAdmon', [authoritations.verifyToken, authoritations.isAdmin], updateUser)
+router.post('/updateAdmon', [authoritations.verifyToken, authoritations.isAdmin, verify.checkDuplicateUsernameOrEmail, verify.checkRolesExisted], updateUser)
 export default router;
