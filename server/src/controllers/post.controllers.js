@@ -1,5 +1,4 @@
 import Post from '../models/Post'
-import User from '../models/User';
 
 const getPosts = async(req, res) => {
     try {
@@ -23,14 +22,29 @@ const getPostsIdUser = async(req, res) => {
 }
 const updatePost = async(req, res) => {
     try {
-        res.status(200).json("updatePost")
+        const {id}=req.params;
+        const post=await Post.findByIdAndUpdate(id,req.body,{
+            new:true,
+            runValidators:true
+        });
+        if(!post)
+        {
+            return res.status(404).json({msg:`Post with ID:${id} not found`})
+        }
+        res.status(200).json({post});
     } catch (error) {
         res.status(500).json({ msg: "Somthing went wrong" })
     }
 }
 const deletePost = async(req, res) => {
     try {
-        res.status(200).json("deletePost")
+        const {id}=req.params;
+        const post=await Post.findByIdAndDelete(id);
+        if(!post)
+        {
+            return res.status(404).json({msg:`Post with ID:${id} not found`})
+        }
+        res.status(204).json("Deleted");
     } catch (error) {
         res.status(500).json({ msg: "Somthing went wrong" })
     }

@@ -19,8 +19,7 @@ const postSchema = new Schema({
     },
     userID: {
         type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+        ref: "User"
     },
     category: [{
         type: String,
