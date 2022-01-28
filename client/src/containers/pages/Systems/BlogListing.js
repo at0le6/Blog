@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import { setBlogs } from "../../../redux/actions/product.actions";
 import {useSelector,useDispatch} from 'react-redux'
 import axios from 'axios';
+import BlogComponent from './Sub System/BlogComponent';
 ;
 
 
@@ -17,7 +18,8 @@ function BlogListing() {
         dataFech();
     },[])
     return (
-    <div className='container'>
+    <div>
+        <BlogComponent/>
     </div>
     );
 }
