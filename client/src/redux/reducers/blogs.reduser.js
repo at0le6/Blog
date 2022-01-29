@@ -13,9 +13,9 @@ export const blogReducer = (state = initialSate, { type, payload }) => {
 }
 export const selectedBlogReducer = (state = {}, { type, payload }) => {
     switch (type) {
-        case ActionTypes.SELECTED_PRODUCTS:
+        case ActionTypes.SELECTED_BLOG:
             return {...state, ...payload };
-        case ActionTypes.REMOVE_SELECTED_PRODUCTS:
+        case ActionTypes.REMOVE_SELECTED_BLOG:
             return {};
         default:
             return state;
