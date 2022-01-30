@@ -4,6 +4,7 @@ import Blog from './containers/pages/Blog';
 import About from './containers/pages/About';
 import LogIn from './containers/pages/LogIn';
 import BlogDetails from './containers/pages/Systems/BlogDetails';
+import SignUp from './containers/pages/SignUp';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Blog/>}/>
           <Route path='/about' element={<About/>}/>
-          <Route path='/login' element={<LogIn/>}/>
+          <Route path="/sign-up" element={<SignUp/>} />
+          <Route path='/sig-in' element={<LogIn/>}/>
           <Route path='/post/:id' element={<BlogDetails/>}/>
         </Routes>
       </Router>

@@ -21,3 +21,11 @@ export const selectedBlogReducer = (state = {}, { type, payload }) => {
             return state;
     }
 }
+export const logInReducer = (state = false, { type }) => {
+    switch (type) {
+        case ActionTypes.IS_LOG_IN:
+            return !state;
+        default:
+            return state;
+    }
+}

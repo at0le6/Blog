@@ -6,7 +6,8 @@ import posts from './routes/post.routes'
 import PublicCredentials from './routes/auth.routes'
 import AdminRoutes from './routes/admin.routes'
 import { creatBases } from "./lib/initialSetUp";
-import cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';;
+
 cors();
 const app = express();
 //dev stuff

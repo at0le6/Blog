@@ -16,3 +16,8 @@ export const removeSelectedBlogs = () => {
         type: ActionTypes.REMOVE_SELECTED_BLOG,
     }
 }
+export const login = () => {
+    return {
+        type: ActionTypes.IS_LOG_IN,
+    }
+}

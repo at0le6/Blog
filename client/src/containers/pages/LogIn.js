@@ -1,8 +1,9 @@
 import React from 'react';
+import LogInComponent from './Systems/Sub System/LogInComponent';
 
 function LogIn() {
-  return <div>
-      <h1>Log in</h1>
+  return <div className='container'>
+      <LogInComponent/>
   </div>;
 }
 

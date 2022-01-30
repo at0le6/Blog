@@ -2,4 +2,5 @@ export const ActionTypes = {
     SET_BLOGS: "SET_BLOGS",
     SELECTED_BLOG: "SELECTED_BLOG",
     REMOVE_SELECTED_BLOG: "REMOVE_SELECTED_BLOG",
+    IS_LOG_IN: "IS_LOG_IN",
 }

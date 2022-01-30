@@ -25,14 +25,14 @@ function BlogDetails() {
   return (
     <div>
         {Object.keys(blog).length===0?<p>Loanding...</p>:(
-        <header class="d-flex" style={{background:"linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)),url(" + imageUrl + ")",height:"30vh"}}>
-          <div class="container position-relative px-4 px-lg-5 align-self-center">
-            <div class="row gx-4 gx-lg-5 justify-content-center text-white">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <div class="post-heading">
+        <><header className="d-flex" style={{background:"linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)),url(" + imageUrl + ")",height:"30vh"}}>
+          <div className="container position-relative px-4 px-lg-5 align-self-center">
+            <div className="row gx-4 gx-lg-5 justify-content-center text-white">
+                <div className="col-md-10 col-lg-8 col-xl-7">
+                    <div className="post-heading">
                         <h2>{title}</h2>
-                        <h2 class="fw-light subheading">{littleDescription}</h2>
-                        <span class="meta">
+                        <h2 className="fw-light subheading">{littleDescription}</h2>
+                        <span className="meta">
                             Posted by
                             <a href="#!">Start Bootstrap</a>
                             {createdAt}
@@ -42,6 +42,12 @@ function BlogDetails() {
             </div>
         </div>
     </header>
+    <main className='container'>
+      <div className='mt-5'>
+        <p>{cuerpo}</p>
+      </div>
+    </main>
+    </>
         )}
     </div>
   )
