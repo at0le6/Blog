@@ -1,9 +1,15 @@
 import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import {useDispatch,useSelector} from 'react-redux';
+import {login} from '../../../../redux/actions/product.actions';
+;
+
 
 
 function LogInComponent() {
+    const blog=useSelector(state=>state.Log);
+    const dispach=useDispatch()
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const [message, setMessage] = useState("");
@@ -16,13 +22,13 @@ function LogInComponent() {
         {
             setEmail('')
             setPassword('')
-            setMessage("User created successfully");
+            setMessage("User Sig In");
+            dispach(login())
         } else {
         setMessage("Some error occured");
         }
         console.log(response.status);
     }
-
   return <div className='mb-5'>
       <form onSubmit={handleSubmit}>
                 <h3>Sign In</h3>

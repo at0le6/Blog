@@ -2,8 +2,12 @@ import React,{lazy,Suspense} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import HeaderRigth from './Sub System/HeaderRigth';
 
-function header() {
+function Header() {
+  const blog=useSelector(state=>state.Log);
+  console.log(blog);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container-fluid">
@@ -14,10 +18,10 @@ function header() {
         </li>
       </ul>
     </div>
-    <Link className='navbar-brand' to={'/sig-in'}>Log In</Link>
+    <Link className='navbar-brand' to={'/sig-in'}>Sig In</Link>
     <FontAwesomeIcon icon={faUser} />
   </div>
 </nav>);
 }
 
-export default header;
+export default Header;
