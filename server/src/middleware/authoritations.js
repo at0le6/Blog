@@ -4,7 +4,7 @@ import Role from '../models/Role';
 
 const verifyToken = async(req, res, next) => {
     try {
-        const token = req.headers['x-acces-token'];
+        const { token } = req.signedCookies;
         if (!token) {
             return res.status(403).json({ msg: "Token not provided denied acces" })
         }

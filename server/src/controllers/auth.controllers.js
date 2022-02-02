@@ -1,7 +1,6 @@
 import User from '../models/User'
 import Role from "../models/Role";
 import jwt from "jsonwebtoken";
-import cookies from 'cookie';;
 
 
 const signIn = async(req, res) => {
@@ -16,9 +15,8 @@ const signIn = async(req, res) => {
             return res.status(401).json({ msg: "Invalid password" })
         }
         const token = jwt.sign({ id: userfound._id }, process.env.SECRETtJWT, { expiresIn: 86400 })
-        res.cookie('token', `${token}`, { expires: new Date(Date.now() + 86400), httpOnly: true });
-
-        res.status(200).json({ token });
+        res.cookie('token', `${token}`, { expires: new Date(Date.now() + 86400000), httpOnly: true, signed: true });
+        res.status(204).json();
     } catch (error) {
         res.status(500).json({ msg: "Somthing went wrong" })
     }
@@ -37,7 +35,8 @@ const publicsignUp = async(req, res) => {
     newBaseUser.roles = [role._id];
     const user = await User.create(newBaseUser);
     const token = jwt.sign({ id: newBaseUser._id }, process.env.SECRETtJWT, { expiresIn: 86400 })
-    res.cookie('token', `${token}`);
+    res.cookie('token', `${token}`, { expires: new Date(Date.now() + 86400000), httpOnly: true })
+    console.log(req.signedCookies);
     res.status(200).json({ token });
 }
 const privatesignUp = async(req, res) => {
@@ -54,7 +53,7 @@ const privatesignUp = async(req, res) => {
     newBaseUser.roles = foundRoles.map(e => e._id);
     const user = await User.create(newBaseUser);
     const token = jwt.sign({ id: newBaseUser._id }, process.env.SECRETtJWT, { expiresIn: 86400 })
-    res.cookie('token', `${token}`);
+    res.cookie('token', `${token}`, { expires: new Date(Date.now() + 86400000), httpOnly: true })
     res.status(200).json({ token });
 }
 const updateUser = async(req, res) => {

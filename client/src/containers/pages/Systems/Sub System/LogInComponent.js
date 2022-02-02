@@ -18,16 +18,16 @@ function LogInComponent() {
     {
         e.preventDefault();
         const response=await axios.post('/api/v1/user/signIn',{email,password}).catch(e=>console.log(e));
-        if(response.status===200)
+        if(response.status===204)
         {
             setEmail('')
             setPassword('')
             setMessage("User Sig In");
             dispach(login())
-        } else {
+        } 
+        else {
         setMessage("Some error occured");
         }
-        console.log(response.status);
     }
   return <div className='mb-5'>
       <form onSubmit={handleSubmit}>
