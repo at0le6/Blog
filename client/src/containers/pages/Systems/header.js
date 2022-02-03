@@ -2,33 +2,18 @@ import React,{useState,useRef,useEffect} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
-import {useSelector} from 'react-redux';
-import {Dropdown} from 'bootstrap'
-//import HeaderComponent from '../../privatePages/subSystemPrivate/HeaderComponent';
-
-const HeaderComponent=()=> {
-  const ddRef = useRef()
-  useEffect(() => {
-      var dd = new Dropdown(ddRef.current, {})
-  })
-  return <div>
-      <li className="dropdown">
-  <button className="btn btn-secondary dropdown-toggle" type="button" ref={ddRef} aria-expanded="false">
-  Add <FontAwesomeIcon icon={faPlus} /> 
-  </button>
-  <ul className="dropdown-menu" aria-labelledby="dropdown1">
-      <li><Link to={'/user/post/add'} className='dropdown-item'>Add Post</Link></li>
-      <li><Link to={'/user/post/delete'} className='dropdown-item'>Delete Post</Link></li>
-      <li><Link to={'/user/post/update'} className='dropdown-item'>Update Post</Link></li>
-  </ul>
-</li>
-  </div>;
-}
+import {useDispatch,useSelector} from 'react-redux';
+import {login} from '../../../redux/actions/product.actions'
+import HeaderComponent from '../../privatePages/subSystemPrivate/HeaderComponent';
 
 function Header() {
-  const [mounted, setMounted] = useState(true);
   const blog=useSelector(state=>state.Log);
-  console.log(blog);
+  const dispach=useDispatch()
+  const LogOut=()=>
+  {
+    localStorage.setItem('wasLogIn',false);
+    dispach(login());
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className='navbar-brand h1 fs-2 justify-content-center' to={'/'}>Devs Blog</Link>
@@ -38,17 +23,19 @@ function Header() {
     </button>
     <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul className="navbar-nav mb-2 mb-lg-0">
-        <li className="nav-item">
-          {blog?<Link className='navbar-brand' to={'/user/home'}>Profile</Link>:<></>}
+        <li className='nav-item'>
+          {blog?<HeaderComponent/>:<></>}
         </li>
         <li className="nav-item">
-          {blog?<Link className='navbar-brand pe-3' to={'/'}>Log out</Link>:<></>}
+          {blog?<Link className='navbar-brand pe-3' to={'/user/home'}>Profile</Link>:<></>}
+        </li>
+        <li className="nav-item">
+          {blog?<Link className='navbar-brand pe-3' onClick={LogOut} to={'/'}>Log out</Link>:<></>}
         </li>
       </ul>
     </div>
     {!blog?<Link className='navbar-brand' to={'/sig-in'}>Sig In</Link>:<></>}
     {!blog?<FontAwesomeIcon icon={faUser} />:<></> }
-    {blog?mounted&&<div className='navbar-nav '><HeaderComponent/></div>:<></>}
   </div>
 </nav>);
 }

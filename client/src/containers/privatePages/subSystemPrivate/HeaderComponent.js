@@ -1,25 +1,20 @@
-import React,{useRef,useEffect} from 'react';
+import React,{useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {Dropdown} from 'bootstrap'
 
 const HeaderComponent=()=> {
-    const ddRef = useRef()
-    useEffect(() => {
-        var dd = new Dropdown(ddRef.current, {})
-    })
-    return <div>
-        <li className="dropdown">
-    <button className="btn btn-secondary dropdown-toggle" type="button" ref={ddRef} aria-expanded="false">
-    Add <FontAwesomeIcon icon={faPlus} /> 
+    const [dropdown, setDropdown] = useState(false);
+    const toggleOpen = () => setDropdown(!dropdown);
+    return <div className='pe-4'>
+        <div className="dropdown">
+    <button className="btn btn-secondary dropdown-toggle" type="button" onClick={toggleOpen} aria-expanded="false">
+        Actions   
     </button>
-    <ul className="dropdown-menu" aria-labelledby="dropdown1">
-        <li><Link to={'/user/post/add'} className='dropdown-item'>Add Post</Link></li>
-        <li><Link to={'/user/post/delete'} className='dropdown-item'>Delete Post</Link></li>
-        <li><Link to={'/user/post/update'} className='dropdown-item'>Update Post</Link></li>
+    <ul className={`dropdown-menu ${dropdown ? 'show' : ''}`} aria-labelledby="dropdown1">
+        <li><Link to={'/user/post/add'} className='dropdown-item' onClick={toggleOpen}>Add Post</Link></li>
+        <li><Link to={'/user/post/delete'} className='dropdown-item' onClick={toggleOpen}>Delete Post</Link></li>
+        <li><Link to={'/user/post/update'} className='dropdown-item'onClick={toggleOpen}>Update Post</Link></li>
     </ul>
-</li>
+</div>
     </div>;
 }
 

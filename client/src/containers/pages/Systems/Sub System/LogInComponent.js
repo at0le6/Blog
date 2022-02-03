@@ -1,9 +1,8 @@
 import React,{useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link,Navigate } from 'react-router-dom';
 import axios from 'axios';
 import {useDispatch,useSelector} from 'react-redux';
 import {login} from '../../../../redux/actions/product.actions';
-;
 
 
 
@@ -24,9 +23,12 @@ function LogInComponent() {
             setPassword('')
             setMessage("User Sig In");
             dispach(login())
+            localStorage.setItem('wasLogIn',true)
+
         } 
         else {
         setMessage("Some error occured");
+        localStorage.setItem('wasLogIn',false)
         }
     }
   return <div className='mb-5'>
