@@ -1,7 +1,9 @@
 import React from 'react';
+import {PreLoadListing} from './SystemPrivate/PreLoadListing';
+
 
 function DeletePost() {
-  return <div>Delete Page</div>;
+  return <PreLoadListing data='delete'/>;
 }
 
 export default DeletePost;

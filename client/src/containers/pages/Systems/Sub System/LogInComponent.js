@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { Link,Navigate } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {useDispatch,useSelector} from 'react-redux';
 import {login} from '../../../../redux/actions/product.actions';
@@ -9,6 +9,7 @@ import {login} from '../../../../redux/actions/product.actions';
 function LogInComponent() {
     const blog=useSelector(state=>state.Log);
     const dispach=useDispatch()
+    const navigate=useNavigate()
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const [message, setMessage] = useState("");
@@ -24,7 +25,7 @@ function LogInComponent() {
             setMessage("User Sig In");
             dispach(login())
             localStorage.setItem('wasLogIn',true)
-
+            navigate('/');
         } 
         else {
         setMessage("Some error occured");

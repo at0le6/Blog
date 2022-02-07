@@ -11,6 +11,16 @@ export const blogReducer = (state = initialSate, { type, payload }) => {
             return state;
     }
 }
+export const listingBlogReducer = (state = {}, { type, payload }) => {
+    switch (type) {
+        case ActionTypes.SET_LISTING_BLOGS:
+            return {...state, ...payload };
+        case ActionTypes.REMOVE_LISTING_BLOGS:
+            return {};
+        default:
+            return state;
+    }
+}
 export const selectedBlogReducer = (state = {}, { type, payload }) => {
     switch (type) {
         case ActionTypes.SELECTED_BLOG:

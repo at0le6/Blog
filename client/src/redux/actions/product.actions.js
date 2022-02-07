@@ -5,6 +5,17 @@ export const setBlogs = (blogs) => {
         payload: blogs,
     }
 }
+export const setListBlogs = (blogs) => {
+    return {
+        type: ActionTypes.SET_LISTING_BLOGS,
+        payload: blogs,
+    }
+}
+export const RemovesetListBlogs = () => {
+    return {
+        type: ActionTypes.SET_LISTING_BLOGS,
+    }
+}
 export const selectedBlogs = (blog) => {
     return {
         type: ActionTypes.SELECTED_BLOG,

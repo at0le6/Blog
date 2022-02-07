@@ -22,27 +22,25 @@ const getPostsIdUser = async(req, res) => {
 }
 const updatePost = async(req, res) => {
     try {
-        const {id}=req.params;
-        const post=await Post.findByIdAndUpdate(id,req.body,{
-            new:true,
-            runValidators:true
+        const { id } = req.params;
+        const post = await Post.findByIdAndUpdate(id, req.body, {
+            new: true,
+            runValidators: true
         });
-        if(!post)
-        {
-            return res.status(404).json({msg:`Post with ID:${id} not found`})
+        if (!post) {
+            return res.status(404).json({ msg: `Post with ID:${id} not found` })
         }
-        res.status(200).json({post});
+        res.status(200).json({ post });
     } catch (error) {
         res.status(500).json({ msg: "Somthing went wrong" })
     }
 }
 const deletePost = async(req, res) => {
     try {
-        const {id}=req.params;
-        const post=await Post.findByIdAndDelete(id);
-        if(!post)
-        {
-            return res.status(404).json({msg:`Post with ID:${id} not found`})
+        const { id } = req.params;
+        const post = await Post.findByIdAndDelete(id);
+        if (!post) {
+            return res.status(404).json({ msg: `Post with ID:${id} not found` })
         }
         res.status(204).json("Deleted");
     } catch (error) {
@@ -84,4 +82,16 @@ const getPostId = async(req, res) => {
         res.status(500).json({ msg: "Somthing went wrong" })
     }
 }
-module.exports = { getPostId, getPostsIdUser, createPost, updatePost, deletePost, getPosts }
+const getPostUser = async(req, res) => {
+    try {
+        const id = req.userId;
+        const posts = await Post.find({ userID: { $in: id } })
+        if (!posts) {
+            return res.status(404).json({ msg: `Post with ID:${id} not found` })
+        }
+        res.status(200).json({ posts });
+    } catch (error) {
+        res.status(500).json({ msg: "Somthing went wrong" })
+    }
+}
+module.exports = { getPostId, getPostsIdUser, createPost, updatePost, deletePost, getPosts, getPostUser }
