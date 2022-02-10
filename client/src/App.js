@@ -1,21 +1,12 @@
 import Header from './containers/pages/Systems/header'
-import React,{useEffect} from 'react';
+import React from 'react';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import {  Blog, About, SignUp, LogIn,BlogDetails} from './containers/pages'
 import ProtectedRoutes from './containers/ProtectedRoutes';
 import {UserHome,AddPost,UpdatePost,DeletePost} from './containers/privatePages'
-import {useDispatch,useSelector} from 'react-redux';
-import {login} from './redux/actions/product.actions'
 
 
 function App() {
-  const blog=useSelector(state=>state.Log);
-  const dispach=useDispatch()
-  useEffect(()=>{if(localStorage.getItem("wasLogIn")==="true")
-  {
-    
-    dispach(login())
-  }},[]);
   return (
     <>
       <Router>

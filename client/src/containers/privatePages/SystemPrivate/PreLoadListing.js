@@ -12,7 +12,7 @@ export const PreLoadListing = (props) => {
     const dispach=useDispatch();
     const dataFech = async() => {
         const response = await axios.get('/api/v1/posts/user').catch(e => console.log(e))
-        const {posts}=response.data
+        const posts=response.data
         dispach(setListBlogs(posts))
     }
     useEffect(()=>{
@@ -22,5 +22,5 @@ export const PreLoadListing = (props) => {
             removeSelectedBlogs()
         }
     },[])
-  return <>{data==='delete'?<DeletingComponent/>:<UpdatedComponent/>}</>;
+  return <div className='container mt-4'>{data==='delete'?<DeletingComponent/>:<UpdatedComponent/>}</div>;
 };

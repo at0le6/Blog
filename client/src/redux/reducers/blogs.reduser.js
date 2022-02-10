@@ -31,7 +31,13 @@ export const selectedBlogReducer = (state = {}, { type, payload }) => {
             return state;
     }
 }
-export const logInReducer = (state = false, { type }) => {
+const initSesion = () => {
+    if (localStorage.getItem("wasLogIn") === "true") {
+        return true
+    }
+    return false
+}
+export const logInReducer = (state = initSesion(), { type }) => {
     switch (type) {
         case ActionTypes.IS_LOG_IN:
             return !state;

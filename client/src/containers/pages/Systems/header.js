@@ -4,7 +4,7 @@ import { faUser,faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
 import {login} from '../../../redux/actions/product.actions'
-import HeaderComponent from '../../privatePages/subSystemPrivate/HeaderComponent';
+import HeaderComponent from '../../privatePages/SystemPrivate/HeaderComponent';
 
 function Header() {
   const blog=useSelector(state=>state.Log);

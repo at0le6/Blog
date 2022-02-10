@@ -22,8 +22,8 @@ app.use('/api/v1/posts', posts);
 app.use('/api/v1/user', PublicCredentials);
 app.use('/api/v1/admin', AdminRoutes)
     //Static files server Load with react stuff
-    /*app.use(express.static(path.resolve(__dirname, '../../client/build')));
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../../client/build', 'index.html'))
-    });*/
+app.use(express.static(path.resolve(__dirname, '../../client/build')));
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../client/build', 'index.html'))
+});
 export default app;
