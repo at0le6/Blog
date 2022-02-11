@@ -1,14 +1,15 @@
 import React,{useState,useRef,useEffect} from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser,faPlus } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
 import {login} from '../../../redux/actions/product.actions'
 import HeaderComponent from '../../privatePages/SystemPrivate/HeaderComponent';
+import { Button } from 'react-bootstrap';
 
 function Header() {
   const blog=useSelector(state=>state.Log);
+  const navigate=useNavigate()
   const dispach=useDispatch()
+  const handleSigUp=()=>navigate('/sign-up')
   const LogOut=()=>
   {
     localStorage.setItem('wasLogIn',false);
@@ -34,8 +35,8 @@ function Header() {
         </li>
       </ul>
     </div>
-    {!blog?<Link className='navbar-brand' to={'/sig-in'}>Sig In</Link>:<></>}
-    {!blog?<FontAwesomeIcon icon={faUser} />:<></> }
+    {!blog?<Link className='navbar-brand pe-2' to={'/sig-in'}>Sig In</Link>:<></>}
+    {!blog?<Button className='navbar-brand text-light' onClick={handleSigUp}>Sig Up</Button>:<></>}
   </div>
 </nav>);
 }

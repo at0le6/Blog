@@ -23,6 +23,7 @@ const getPostsIdUser = async(req, res) => {
 const updatePost = async(req, res) => {
     try {
         const { id } = req.params;
+        console.log(req.body)
         const post = await Post.findByIdAndUpdate(id, req.body, {
             new: true,
             runValidators: true

@@ -6,7 +6,7 @@ const HeaderComponent=()=> {
     const toggleOpen = () => setDropdown(!dropdown);
     return <div className='pe-4'>
         <div className="dropdown">
-    <button className="btn btn-secondary dropdown-toggle" type="button" onClick={toggleOpen} aria-expanded="false">
+    <button className="btn btn-primary dropdown-toggle" type="button" onClick={toggleOpen} aria-expanded="false">
         Actions   
     </button>
     <ul className={`dropdown-menu ${dropdown ? 'show' : ''}`} aria-labelledby="dropdown1">

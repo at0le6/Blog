@@ -29,7 +29,7 @@ export default function DeleteComponent() {
       <p>{e.littleDescription}</p>
       <button onClick={(a) =>deletePost(e._id)} className="btn btn-danger">Delete</button>
       </div>
-</div>
+      </div>
       </div>
     ))}</> ;
 }
