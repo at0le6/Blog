@@ -4,6 +4,7 @@ import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import {  Blog, About, SignUp, LogIn,BlogDetails} from './containers/pages'
 import ProtectedRoutes from './containers/ProtectedRoutes';
 import {UserHome,AddPost,UpdatePost,DeletePost} from './containers/privatePages'
+import Dashboad from './containers/privatePages/Dashboad';
 
 
 function App() {

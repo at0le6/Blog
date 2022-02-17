@@ -73,4 +73,21 @@ const updateUser = async(req, res) => {
         res.status(500).json({ msg: "Somthing went wrong" })
     }
 }
-module.exports = { updateUser, privatesignUp, publicsignUp, signIn }
+const getAdmonPost=async (req,res)=>
+{
+    try {
+        const users=await User.find().populate('roles')
+        if (!users) {
+            return res.status(404).json({ msg: `Emty` })
+        }
+        const data=users.map(element=>{
+            const {_id,username,email,roles}=element
+            const rol=roles.map(e=>e.name)
+            return {_id,username,email,rol}
+        })
+        res.status(200).json({data});
+    } catch (error) {
+        res.status(500).json({ msg: "Somthing went wrong" })
+    }
+}
+module.exports = { updateUser, privatesignUp, publicsignUp, signIn,getAdmonPost }
